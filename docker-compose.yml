@@ -1,0 +1,24 @@
+version: '3'
+services:
+  pulsar:
+    build: 
+      context: .
+      args:
+        progress: plain
+    restart: always
+    volumes:
+      - pulsardata:/pulsar/data
+      # - pulsarconf:/pulsar/conf
+    ports:
+      - 6650:6650 # pulsar port
+      - 6651:6651 # pulsar SSL port
+      - 8080:8080 # pulsar admin
+      - 8081:8081 # pulsar admin SSL
+      - 9000:8000 # download certificates
+    environment:
+      TZ: "Asia/Kolkata"
+
+volumes:
+  pulsardata:
+  # pulsarconf:
+
